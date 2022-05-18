@@ -1,4 +1,4 @@
 library(testthat)
-library(onedriveR)
+library(getonedrive)
 
-test_check("onedriveR")
+test_check("getonedrive")
