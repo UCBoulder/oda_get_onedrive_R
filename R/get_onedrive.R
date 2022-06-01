@@ -1,5 +1,3 @@
-library(dplyr)
-
 #' get_onedrive
 #'
 #' @return A string containing the file location of the OneDrive folder
@@ -11,9 +9,13 @@ get_onedrive = function() {
 
   sys = unname(Sys.info()["sysname"])
 
-  case_when(
+
+  if (!(sys %in% c("Linux","Windows"))) {
+    stop("Unrecognized operating system")
+  }
+
+  dplyr::case_when(
     sys == "Linux" ~ paste0("/mnt/c/Users/",unname(Sys.info()["user"]),"/OneDrive - UCB-O365"),
-    sys == "Windows" ~ Sys.getenv("OneDrive"),
-    TRUE ~stop("Unrecognized operating system")
+    sys == "Windows" ~ Sys.getenv("OneDrive")
   )
 }

@@ -12,3 +12,7 @@ A string containing the file location of the OneDrive folder
 \description{
 get_onedrive
 }
+\examples{
+get_onedrive()
+
+}
